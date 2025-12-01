@@ -54,21 +54,18 @@ def highest_task_implemented() -> int:
 
 
 def download_input_data(task_number: int) -> List[str]:
-    if aocd.cookies.get_working_tokens():
-        aocd.cookies.scrape_session_tokens()
-    else:
-        if not os.environ.get('AOC_SESSION'):
-            cookie_file = pathlib.Path('~/.config/aocd/token').expanduser()
-            if os.path.exists(cookie_file):
-                print('Retrieving session ID from: ', cookie_file)
-                with open(cookie_file, 'r') as f:
-                    os.environ['AOC_SESSION'] = f.readline().strip()
-            else:
-                os.environ['AOC_SESSION'] = input('Please provide session ID in order to download the AOC data:')
-                print('Saving cookie to: ', cookie_file)
-                with open(cookie_file, 'w') as f:
-                    f.write(os.environ['AOC_SESSION'])
-        print('Downloading input-data for current task.')
+    if not os.environ.get('AOC_SESSION'):
+        cookie_file = pathlib.Path('~/.config/aocd/token').expanduser()
+        if os.path.exists(cookie_file):
+            print('Retrieving session ID from: ', cookie_file)
+            with open(cookie_file, 'r') as f:
+                os.environ['AOC_SESSION'] = f.readline().strip()
+        else:
+            os.environ['AOC_SESSION'] = input('Please provide session ID in order to download the AOC data:')
+            print('Saving cookie to: ', cookie_file)
+            with open(cookie_file, 'w') as f:
+                f.write(os.environ['AOC_SESSION'])
+    print('Downloading input-data for current task.')
     return aocd.get_data(day=task_number, year=CURRENT_YEAR).split('\n')
 
 
