@@ -11,10 +11,19 @@ class Task01(AdventOfCodeProblem):
         self.task_number = 1
 
     def solve_task(self, input_file_content: List[str]):
-        return -1
+        current_position = 50
+        zero_counter = 0
+        for line in input_file_content:
+            number = int(line[1:])
+            if line[0] == 'L':
+                number = 100 - number
+            current_position = (current_position + number) % 100
+            if current_position == 0:
+                zero_counter = zero_counter + 1
+        return zero_counter
 
     def solve_bonus_task(self, input_file_content: List[str]):
         return -1
 
     def is_input_valid(self, input_file_content: List[str]):
-        return all(re.fullmatch("", line) for line in input_file_content)
+        return all(re.fullmatch("(R|L)[0-9]+\n?", line) for line in input_file_content)
