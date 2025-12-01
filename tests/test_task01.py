@@ -17,4 +17,7 @@ class Task01Tests(TaskTest, unittest.TestCase):
                    "R14\n",
                    "L82"]
     known_output = 3
-    known_bonus_output = -1
+    known_bonus_output = 6
+
+#6357 too high
+#6204 too low

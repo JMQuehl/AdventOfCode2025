@@ -16,14 +16,30 @@ class Task01(AdventOfCodeProblem):
         for line in input_file_content:
             number = int(line[1:])
             if line[0] == 'L':
-                number = 100 - number
+                number = -number
             current_position = (current_position + number) % 100
             if current_position == 0:
                 zero_counter = zero_counter + 1
         return zero_counter
 
     def solve_bonus_task(self, input_file_content: List[str]):
-        return -1
+        # TODO: Don't do this using loops... This doesn't scale
+        current_position = 50
+        zero_counter = 0
+        for line in input_file_content:
+            number = int(line[1:])
+            if line[0] == 'L':
+                number = -number
+            while number != 0:
+                if number < 0:
+                    current_position = (current_position - 1) % 100
+                    number = number + 1
+                else:
+                    current_position = (current_position + 1) % 100
+                    number = number - 1
+                if current_position == 0:
+                    zero_counter = zero_counter + 1
+        return zero_counter
 
     def is_input_valid(self, input_file_content: List[str]):
         return all(re.fullmatch("(R|L)[0-9]+\n?", line) for line in input_file_content)
