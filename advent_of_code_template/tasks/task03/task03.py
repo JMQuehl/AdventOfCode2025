@@ -6,11 +6,11 @@ import re
 class Task03(AdventOfCodeProblem):
     def __init__(self, args):
         super().__init__(args)
-        self.answer_text = '%d.'
-        self.bonus_answer_text = '%d.'
+        self.answer_text = 'Using 2 batteries the total output joltage is: %d'
+        self.bonus_answer_text = 'Using 12 batteries the total output joltage is: %d'
         self.task_number = 3
 
-    def max_joltage_for_n(self, number_list: str, n : int):
+    def max_joltage_for_n(self, number_list: str, n: int):
         numbers = [int(x) for x in number_list.strip()]
         max_list = []
         start_index = 0
@@ -24,7 +24,6 @@ class Task03(AdventOfCodeProblem):
             start_index = cur_idx + 1
             max_list.append(cur_max)
         return int("".join([str(x) for x in max_list]))
-
 
     def solve_task(self, input_file_content: List[str]):
         joltage_sum = 0

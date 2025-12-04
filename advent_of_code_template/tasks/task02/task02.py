@@ -6,8 +6,8 @@ import re
 class Task02(AdventOfCodeProblem):
     def __init__(self, args):
         super().__init__(args)
-        self.answer_text = '%d.'
-        self.bonus_answer_text = '%d.'
+        self.answer_text = 'The sum of invalid numbers is: %d'
+        self.bonus_answer_text = 'The new sum of invalid numbers is: %d'
         self.task_number = 2
 
     def solve_task(self, input_file_content: List[str]):

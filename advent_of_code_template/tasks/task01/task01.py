@@ -6,8 +6,8 @@ import re
 class Task01(AdventOfCodeProblem):
     def __init__(self, args):
         super().__init__(args)
-        self.answer_text = '%d.'
-        self.bonus_answer_text = '%d.'
+        self.answer_text = 'The number of times the dial stops at zero is: %d'
+        self.bonus_answer_text = 'The number of times, 0 is passed by the dial is: %d'
         self.task_number = 1
 
     def solve_task(self, input_file_content: List[str]):
@@ -23,7 +23,6 @@ class Task01(AdventOfCodeProblem):
         return zero_counter
 
     def solve_bonus_task(self, input_file_content: List[str]):
-        # TODO: Don't do this using loops... This doesn't scale
         current_position = 50
         zero_counter = 0
         for line in input_file_content:
