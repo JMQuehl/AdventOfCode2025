@@ -11,4 +11,4 @@ class Task06Tests(TaskTest, unittest.TestCase):
                    "  6 98  215 314\n",
                    "*   +   *   +  \n"]
     known_output = 4277556
-    known_bonus_output = -1
+    known_bonus_output = 3263827
