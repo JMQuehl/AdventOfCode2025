@@ -32,6 +32,7 @@ class Task09(AdventOfCodeProblem):
 
         largest_area = 0
         for (x0, y0), (x1, y1) in combinations(red_tiles, 2):
+            # shrink area by half a pixel before collision detection to avoid lines on top of each other.
             min_x, min_y, max_x, max_y = min(x0, x1) + 0.5, min(y0, y1) + 0.5, max(x0, x1) - 0.5, max(y0, y1) - 0.5
             if not any(
                     (min_x <= v_x <= max_x and (min_v_y <= min_y <= max_v_y or min_v_y <= max_y <= max_v_y)) or
